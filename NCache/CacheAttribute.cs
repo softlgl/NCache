@@ -45,11 +45,14 @@ namespace NCache
             {
                 //处理task情况
                 Type type = returnValue.GetType();
-                if (type != null && typeof(Task).IsAssignableFrom(type))
+                if (typeof(Task).IsAssignableFrom(type))
                 {
                     var resultProperty = type.GetProperty("Result");
                     object taskValue = resultProperty.GetValue(returnValue);
-                    CacheRepository.Set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
+                    if (taskValue != null)
+                    {
+                        CacheRepository.Set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
+                    }
                     return;
                 }
                 CacheRepository.Set(key, JsonConvert.SerializeObject(returnValue), ExpirationSeconds);

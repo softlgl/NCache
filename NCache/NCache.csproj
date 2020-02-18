@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>softlgl</Authors>
+    <Copyright>softlgl</Copyright>
+    <Owners>softlgl</Owners>
+    <Summary>基于AOP声明式缓存框架</Summary>
+    <Title>NCache</Title>
+    <Description>基于AOP声明式缓存框架</Description>
+    <PackageProjectUrl>https://github.com/softlgl/NCache</PackageProjectUrl>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
