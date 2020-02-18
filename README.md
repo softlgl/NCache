@@ -7,7 +7,7 @@ https://github.com/2881099/csredis
 
 获取方式
 ```
-Install-Package NCache -Version 1.0.1
+Install-Package NCache -Version 1.0.2
 ```
 
 NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数))
