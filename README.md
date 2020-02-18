@@ -5,6 +5,11 @@ AOP框架使用AspectCore文档较少，使用时候多看看源码
 Redis客户端驱动使用的是CSRedis,因为csredis配置比较灵活所以保留了默认的配置方式
 https://github.com/2881099/csredis
 
+获取方式
+```
+Install-Package NCache -Version 1.0.1
+```
+
 NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数))
 
 示例代码 .net core 3.1
