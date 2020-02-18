@@ -24,14 +24,14 @@ namespace NCache
         /// 属性注入
         /// </summary>
         [FromServiceContext]
-        private ICacheRepository cacheRepository { get; set; }
+        private ICacheRepository CacheRepository { get; set; }
 
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
             //构建缓存key
             string paramStr = JsonConvert.SerializeObject(context.Parameters);
             string key = $"{KeyPrefix}:{MD5Helper.Get32MD5(paramStr)}";
-            string value = cacheRepository.get(key);
+            string value = CacheRepository.Get(key);
             //缓存存在
             if (!string.IsNullOrWhiteSpace(value))
             {
@@ -49,10 +49,10 @@ namespace NCache
                 {
                     var resultProperty = type.GetProperty("Result");
                     object taskValue = resultProperty.GetValue(returnValue);
-                    cacheRepository.set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
+                    CacheRepository.Set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
                     return;
                 }
-                cacheRepository.set(key, JsonConvert.SerializeObject(returnValue), ExpirationSeconds);
+                CacheRepository.Set(key, JsonConvert.SerializeObject(returnValue), ExpirationSeconds);
             }
         }
     }

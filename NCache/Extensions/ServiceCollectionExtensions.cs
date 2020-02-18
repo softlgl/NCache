@@ -17,15 +17,15 @@ namespace NCache.Extensions
         {
             CacheOption cacheOption = new CacheOption();
             cacheAction.Invoke(cacheOption);
-            switch (cacheOption.cacheType)
+            switch (cacheOption.CacheType)
             {
                 case CacheTypeEnum.Local:
                 case CacheTypeEnum.Redis:
-                    if (cacheOption.redisClient==null)
+                    if (cacheOption.RedisClient==null)
                     {
-                        throw new ArgumentNullException(nameof(cacheOption.redisClient));
+                        throw new ArgumentNullException(nameof(cacheOption.RedisClient));
                     }
-                    CSRedis.CSRedisClient cSRedis = cacheOption.redisClient;
+                    CSRedis.CSRedisClient cSRedis = cacheOption.RedisClient;
                     RedisHelper.Initialization(cSRedis);
                     services.AddSingleton<ICacheRepository, RedisCacheRepository>();
                     break;

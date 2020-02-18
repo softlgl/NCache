@@ -9,11 +9,11 @@ namespace NCache
         /// <summary>
         /// 缓存类型
         /// </summary>
-        public CacheTypeEnum cacheType { get; set; }
+        public CacheTypeEnum CacheType { get; set; }
 
         /// <summary>
         /// CsRedis实例
         /// </summary>
-        public CSRedis.CSRedisClient redisClient { get; set; }
+        public CSRedis.CSRedisClient RedisClient { get; set; }
     }
 }

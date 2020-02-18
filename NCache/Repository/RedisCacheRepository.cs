@@ -7,17 +7,17 @@ namespace NCache.Repository
         {
         }
 
-        public void delete(string key)
+        public void Delete(string key)
         {
             RedisHelper.Del(key);
         }
 
-        public string get(string key)
+        public string Get(string key)
         {
             return RedisHelper.Get(key);
         }
 
-        public void set(string key, string data, int expireSeconds)
+        public void Set(string key, string data, int expireSeconds)
         {
             RedisHelper.Set(key, data, expireSeconds);
         }

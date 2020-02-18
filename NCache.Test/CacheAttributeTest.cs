@@ -55,8 +55,8 @@ namespace NCache.Test
             services.AddSingleton<IPersonService, PersonService>();
             services.AddNCache(option =>
             {
-                option.cacheType = CacheTypeEnum.Redis;
-                option.redisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
+                option.CacheType = CacheTypeEnum.Redis;
+                option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
             });
             services.ConfigureDynamicProxy();
             return services.BuildDynamicProxyProvider(); ;

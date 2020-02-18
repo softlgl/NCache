@@ -8,7 +8,7 @@ namespace NCache.Repository
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        string get(string key);
+        string Get(string key);
 
         /// <summary>
         /// 设置缓存
@@ -16,12 +16,12 @@ namespace NCache.Repository
         /// <param name="key"></param>
         /// <param name="data"></param>
         /// <param name="expireSeconds"></param>
-        void set(string key,string data,int expireSeconds);
+        void Set(string key,string data,int expireSeconds);
 
         /// <summary>
         /// 删除缓存
         /// </summary>
         /// <param name="key"></param>
-        void delete(string key);
+        void Delete(string key);
     }
 }
