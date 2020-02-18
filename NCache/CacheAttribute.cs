@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AspectCore.DependencyInjection;
 using AspectCore.DynamicProxy;
 using NCache.Repository;
@@ -19,25 +20,39 @@ namespace NCache
         /// </summary>
         public int ExpirationSeconds { get; set; }
 
+        /// <summary>
+        /// 属性注入
+        /// </summary>
         [FromServiceContext]
         private ICacheRepository cacheRepository { get; set; }
 
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
+            //构建缓存key
             string paramStr = JsonConvert.SerializeObject(context.Parameters);
-            string key = $"KeyPrefix:{MD5Helper.Get32MD5(paramStr)}";
+            string key = $"{KeyPrefix}:{MD5Helper.Get32MD5(paramStr)}";
             string value = cacheRepository.get(key);
+            //缓存存在
             if (!string.IsNullOrWhiteSpace(value))
             {
                 context.ReturnValue = JsonConvert.DeserializeObject(value, context.ProxyMethod.ReturnType);
                 return;
             }
             await next(context);
+            //放入缓存
             object returnValue = context.ReturnValue;
             if (returnValue != null)
             {
+                //处理task情况
+                Type type = returnValue.GetType();
+                if (type != null && typeof(Task).IsAssignableFrom(type))
+                {
+                    var resultProperty = type.GetProperty("Result");
+                    object taskValue = resultProperty.GetValue(returnValue);
+                    cacheRepository.set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
+                    return;
+                }
                 cacheRepository.set(key, JsonConvert.SerializeObject(returnValue), ExpirationSeconds);
-                return;
             }
         }
     }
