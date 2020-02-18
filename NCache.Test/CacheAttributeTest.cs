@@ -11,6 +11,7 @@ namespace NCache.Test
 {
     public class CacheAttributeTest
     {
+        //nuget api key:oy2mj2byxhsisyq3aeuahicd77yo5hrevc55ignpqvl4ym
         [Fact]
         public void GetCache()
         {
@@ -59,7 +60,7 @@ namespace NCache.Test
                 option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
             });
             services.ConfigureDynamicProxy();
-            return services.BuildDynamicProxyProvider(); ;
+            return services.BuildDynamicProxyProvider();
         }
     }
 }
