@@ -9,7 +9,7 @@
     <Title>NCache</Title>
     <Description>基于AOP声明式缓存框架</Description>
     <PackageProjectUrl>https://github.com/softlgl/NCache</PackageProjectUrl>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
