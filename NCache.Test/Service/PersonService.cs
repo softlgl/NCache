@@ -10,7 +10,7 @@ namespace NCache.Test.Service
         {
         }
 
-        [Cache(KeyPrefix ="Person",ExpirationSeconds =3600)]
+        [Cache(KeyPrefix ="Person",Expiration  =3600)]
         public Person GetPerson(int id)
         {
             Person person = new Person
@@ -22,13 +22,13 @@ namespace NCache.Test.Service
             return person;
         }
 
-        [Cache(KeyPrefix = "PersonAdd", ExpirationSeconds = 3600)]
+        [Cache(KeyPrefix = "PersonAdd", Expiration  = 3600)]
         public void AddPerson(Person person)
         {
 
         }
 
-        [Cache(KeyPrefix = "PersonUpdate", ExpirationSeconds = 3600)]
+        [Cache(KeyPrefix = "PersonUpdate", Expiration  = 3600)]
         public async Task<Person> UpdatePerson(int id,Person person)
         {
             await Task.Delay(10);

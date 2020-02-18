@@ -16,9 +16,9 @@ namespace NCache
         public string KeyPrefix { get; set; }
 
         /// <summary>
-        /// 过期时间
+        /// 过期时间(秒)
         /// </summary>
-        public int ExpirationSeconds { get; set; }
+        public int Expiration { get; set; } = 60;
 
         /// <summary>
         /// 属性注入
@@ -51,11 +51,11 @@ namespace NCache
                     object taskValue = resultProperty.GetValue(returnValue);
                     if (taskValue != null)
                     {
-                        CacheRepository.Set(key, JsonConvert.SerializeObject(taskValue), ExpirationSeconds);
+                        CacheRepository.Set(key, JsonConvert.SerializeObject(taskValue), Expiration);
                     }
                     return;
                 }
-                CacheRepository.Set(key, JsonConvert.SerializeObject(returnValue), ExpirationSeconds);
+                CacheRepository.Set(key, JsonConvert.SerializeObject(returnValue), Expiration);
             }
         }
     }
