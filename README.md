@@ -46,7 +46,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 public class PersonService : IPersonService
     {
-        [Cache(KeyPrefix ="Person",ExpirationSeconds =3600)]
+        [Cache(KeyPrefix ="Person",Expiration =3600)]
         public Person GetPerson(int id)
         {
             Person person = new Person
