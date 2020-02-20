@@ -10,7 +10,7 @@ https://github.com/2881099/csredis
 Install-Package NCache -Version 1.1.0
 ```
 
-NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数))
+NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数)),目前支持Redis和本地缓存
 
 示例代码 .net core 3.1
 ```
