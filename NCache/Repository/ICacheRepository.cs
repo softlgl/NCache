@@ -21,7 +21,8 @@ namespace NCache.Repository
         /// <summary>
         /// 删除缓存
         /// </summary>
-        /// <param name="key"></param>
-        void Delete(string key);
+        /// <param name="keyPrefix"></param>
+        /// <param name="paramters"></param>
+        void Delete(string keyPrefix,params object[] paramters);
     }
 }

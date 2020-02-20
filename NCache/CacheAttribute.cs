@@ -29,8 +29,7 @@ namespace NCache
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
             //构建缓存key
-            string paramStr = JsonConvert.SerializeObject(context.Parameters);
-            string key = $"{KeyPrefix}:{MD5Helper.Get32MD5(paramStr)}";
+            string key = KeyHelper.KeyBuilder(KeyPrefix, context.Parameters);
             string value = CacheRepository.Get(key);
             //缓存存在
             if (!string.IsNullOrWhiteSpace(value))

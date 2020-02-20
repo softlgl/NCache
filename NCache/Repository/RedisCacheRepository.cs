@@ -1,15 +1,17 @@
 ﻿using System;
+using NCache.Utils;
+
 namespace NCache.Repository
 {
-    public class RedisCacheRepository:ICacheRepository
+    internal class RedisCacheRepository:ICacheRepository
     {
         public RedisCacheRepository()
         {
         }
 
-        public void Delete(string key)
+        public void Delete(string keyPrefix, params object[] paramters)
         {
-            RedisHelper.Del(key);
+            RedisHelper.Del(KeyHelper.KeyBuilder(keyPrefix, paramters));
         }
 
         public string Get(string key)

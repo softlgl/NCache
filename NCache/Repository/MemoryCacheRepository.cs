@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Extensions.Caching.Memory;
+using NCache.Utils;
 
 namespace NCache.Repository
 {
-    public class MemoryCacheRepository:ICacheRepository
+    internal class MemoryCacheRepository:ICacheRepository
     {
         private IMemoryCache _memoryCache;
         public MemoryCacheRepository(IMemoryCache memoryCache)
@@ -11,9 +12,9 @@ namespace NCache.Repository
             _memoryCache = memoryCache;
         }
 
-        public void Delete(string key)
+        public void Delete(string keyPrefix, params object[] paramters)
         {
-            _memoryCache.Remove(key);
+            _memoryCache.Remove(KeyHelper.KeyBuilder(keyPrefix, paramters));
         }
 
         public string Get(string key)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NCache.Utils
 {
-    public class MD5Helper
+    internal class MD5Helper
     {
         /// <summary>
         ///获取32位md5加密
