@@ -10,7 +10,7 @@ https://github.com/2881099/csredis
 Install-Package NCache -Version 1.1.0
 ```
 
-NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数)),目前支持Redis和本地缓存
+NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数)),目前支持Redis和本地缓存两种方式
 
 示例代码 .net core 3.1
 ```
@@ -29,8 +29,10 @@ public void ConfigureServices(IServiceCollection services)
             services.AddControllersWithViews();
             services.AddNCache(option =>
             {
-                option.CacheType = CacheTypeEnum.Redis;
-                option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
+                option.CacheType = CacheTypeEnum.Local;
+                //或以下方式
+                //option.CacheType = CacheTypeEnum.Redis;
+                //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
             });
         }
 ```
