@@ -10,7 +10,7 @@ namespace NCache.Test.Service
         {
         }
 
-        [Cache(KeyPrefix ="Person",Expiration  =3600)]
+        [Cache(KeyPrefix ="Person",Expiration=60)]
         public Person GetPerson(int id)
         {
             Person person = new Person
