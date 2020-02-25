@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace NCache
 {
+    [AttributeUsage(AttributeTargets.Method)]
     public class CacheAttribute: AbstractInterceptorAttribute
     {
         /// <summary>

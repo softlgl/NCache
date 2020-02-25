@@ -63,7 +63,7 @@ namespace NCache.Test
                 //option.CacheType = CacheTypeEnum.Redis;
                 //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
             });
-            services.ConfigureDynamicProxy();
+            //services.ConfigureDynamicProxy();
             return services.BuildDynamicProxyProvider();
         }
     }
