@@ -43,6 +43,7 @@ namespace NCache
             object returnValue = context.ReturnValue;
             if (returnValue != null)
             {
+                Expiration = KeyHelper.KeyExpirationRandom(Expiration);
                 //处理task情况
                 Type type = returnValue.GetType();
                 if (typeof(Task).IsAssignableFrom(type))
