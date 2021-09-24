@@ -19,7 +19,7 @@ namespace NCache.Test
             IPersonService personService = serviceProvider.GetService<IPersonService>();
             Person person = personService.GetPerson(1);
             person = personService.GetPerson(1);
-            System.Threading.Thread.Sleep(61*1000);
+            System.Threading.Thread.Sleep(6*1000);
             person = personService.GetPerson(1);
             Assert.True(person != null && person.Id == 1);
         }
@@ -57,13 +57,15 @@ namespace NCache.Test
         {
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IPersonService, PersonService>();
-            services.AddNCache(option =>
-            {
-                option.CacheType = CacheTypeEnum.Local;
-                //option.CacheType = CacheTypeEnum.Redis;
-                //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
-            });
+            //services.AddNCache(option =>
+            //{
+            //    option.CacheType = CacheTypeEnum.Local;
+            //    //option.CacheType = CacheTypeEnum.Redis;
+            //    //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
+            //});
             //services.ConfigureDynamicProxy();
+
+            services.AddDistributedMemoryCache().AddNCache();
             return services.BuildDynamicProxyProvider();
         }
     }
