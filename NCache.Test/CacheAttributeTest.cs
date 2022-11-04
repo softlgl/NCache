@@ -57,15 +57,15 @@ namespace NCache.Test
         {
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IPersonService, PersonService>();
-            //services.AddNCache(option =>
-            //{
-            //    option.CacheType = CacheTypeEnum.Local;
-            //    //option.CacheType = CacheTypeEnum.Redis;
-            //    //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
-            //});
-            //services.ConfigureDynamicProxy();
+            services.AddNCache(option =>
+            {
+                //option.CacheType = CacheTypeEnum.Local;
+                option.CacheType = CacheTypeEnum.Redis;
+                option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
+            });
+            services.ConfigureDynamicProxy();
 
-            services.AddDistributedMemoryCache().AddNCache();
+            //services.AddDistributedMemoryCache().AddNCache();
             return services.BuildDynamicProxyProvider();
         }
     }

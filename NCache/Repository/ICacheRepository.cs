@@ -16,13 +16,13 @@ namespace NCache.Repository
         /// <param name="key"></param>
         /// <param name="data"></param>
         /// <param name="expireSeconds"></param>
-        void Set(string key,string data,int expireSeconds);
+        void Set(string key, string data,int expireSeconds);
 
         /// <summary>
         /// 删除缓存
         /// </summary>
         /// <param name="keyPrefix"></param>
         /// <param name="paramters"></param>
-        void Delete(string keyPrefix,params object[] paramters);
+        void Delete(string keyPrefix, params object[] paramters);
     }
 }
