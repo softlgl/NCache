@@ -7,7 +7,7 @@ https://github.com/2881099/csredis
 
 获取方式
 ```
-Install-Package NCache -Version 1.1.0
+Install-Package NCache -Version 1.2.0
 ```
 
 NCache通过Attribute的方式可以对方法结果进行缓存，缓存key的规则为KeyPrefix:md5(json(方法参数)),目前支持Redis和本地缓存两种方式
@@ -44,14 +44,22 @@ public void ConfigureServices(IServiceCollection services)
  public interface IPersonService
     {
         Person GetPerson(int id);
+
+        void AddPerson(Person person);
+
+        Task<Person> UpdatePerson(int id,Person person);
     }
 ```
 
 
 ```
-public class PersonService : IPersonService
+ public class PersonService : IPersonService
     {
-        [Cache(KeyPrefix ="Person",Expiration =3600)]
+        public PersonService()
+        {
+        }
+
+        [Cacheable("Person",Expiration=600)]
         public Person GetPerson(int id)
         {
             Person person = new Person
@@ -60,6 +68,19 @@ public class PersonService : IPersonService
                 Name="liguoliang",
                 Birthday=new DateTime(1992,12,11)
             };
+            return person;
+        }
+
+        [CachePut("PersonAdd", Expiration  = 3600)]
+        public void AddPerson(Person person)
+        {
+
+        }
+
+        [Cacheable("PersonUpdate", Expiration  = 3600)]
+        public async Task<Person> UpdatePerson(int id,Person person)
+        {
+            await Task.Delay(10);
             return person;
         }
     }
