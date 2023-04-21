@@ -25,7 +25,7 @@ namespace NCache
 
         public static IServiceCollection AddNCacheWithDistributedCache(this IServiceCollection services)
         {
-            services.AddSingleton<ICacheRepository, DistributedCachRepository>();
+            services.Replace(ServiceDescriptor.Singleton<ICacheRepository, DistributedCachRepository>());
             return services;
         }
     }
