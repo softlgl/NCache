@@ -11,7 +11,6 @@ namespace NCache.Test
 {
     public class CacheAttributeTest
     {
-        //nuget api key:oy2hsntv453eeor4icyavb3brqkom7fu7auzxxzem3mghq
         [Fact]
         public void GetCache()
         {
