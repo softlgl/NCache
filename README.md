@@ -32,7 +32,7 @@ public void ConfigureServices(IServiceCollection services)
             //services.AddNCacheRedis(new CSRedis.CSRedisClient("127.0.0.1:6379"));
             //如果直接使用使用下面的方式,则会直接IDistributedCache的实例
             //可自行给IDistributedCache注册本地缓存或Redis缓存
-            //services.AddDistributedMemoryCache().AddNCache();
+            //services.AddDistributedMemoryCache().AddNCacheWithDistributedCache();
         }
 ```
 
