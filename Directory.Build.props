@@ -1,0 +1,12 @@
+<Project>  
+    <PropertyGroup>
+     <Authors>softlgl</Authors>
+      <Copyright>softlgl</Copyright>
+      <Owners>softlgl</Owners>
+      <Summary>基于AOP声明式缓存框架</Summary>
+      <Description>基于AOP声明式缓存框架</Description>
+      <PackageProjectUrl>https://github.com/softlgl/NCache</PackageProjectUrl>
+      <PackageVersion>1.3.0</PackageVersion>
+      <Version>1.3.0</Version>
+  </PropertyGroup>
+</Project>

@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using NCache.Json;
 
 namespace NCache.Utils
 {
@@ -13,7 +13,7 @@ namespace NCache.Utils
         /// <returns></returns>
         public static string KeyBuilder(string keyPrefix,params object[] paramters)
         {
-            string paramStr = JsonConvert.SerializeObject(paramters);
+            string paramStr = paramters.SerializeObject();
             return $"{keyPrefix}:{MD5Helper.Get32MD5(paramStr)}";
         }
 
