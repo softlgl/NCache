@@ -27,13 +27,9 @@ public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IPersonService, PersonService>();
             services.AddControllersWithViews();
-            services.AddNCache(option =>
-            {
-                option.CacheType = CacheTypeEnum.Local;
-                //或以下方式
-                //option.CacheType = CacheTypeEnum.Redis;
-                //option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
-            });
+            services.AddNCache();
+            //使用redis缓存
+            //services.AddNCacheRedis(new CSRedis.CSRedisClient("127.0.0.1:6379"));
             //如果直接使用使用下面的方式,则会直接IDistributedCache的实例
             //可自行给IDistributedCache注册本地缓存或Redis缓存
             //services.AddDistributedMemoryCache().AddNCache();
