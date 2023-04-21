@@ -42,7 +42,7 @@ services.AddNCacheRedis(new CSRedis.CSRedisClient("127.0.0.1:6379"));
 ```csharp
 //如果直接使用使用下面的方式,则会直接IDistributedCache的实例
 //可自行给IDistributedCache注册本地缓存或Redis缓存
-//services.AddDistributedMemoryCache().AddNCacheWithDistributedCache();
+services.AddDistributedMemoryCache().AddNCacheWithDistributedCache();
 ```
 #### Demo示例
 ```csharp
