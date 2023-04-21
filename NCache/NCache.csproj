@@ -20,8 +20,6 @@
     <PackageReference Include="System.Text.Json" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Option\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 </Project>

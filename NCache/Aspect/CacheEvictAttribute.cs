@@ -34,7 +34,7 @@ namespace NCache
             object targetReturn = context.IsAsync() ? await context.UnwrapAsyncReturnValue() : context.ReturnValue;
             if (targetReturn != null)
             {
-                 redisRepository.Delete(cacheKey);
+                redisRepository.Delete(cacheKey);
             }
         }
     }
