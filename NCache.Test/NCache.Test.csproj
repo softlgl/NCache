@@ -19,6 +19,7 @@
     <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NCache.Redis\NCache.Redis.csproj" />
     <ProjectReference Include="..\NCache\NCache.csproj" />
   </ItemGroup>
 </Project>

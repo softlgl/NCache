@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CSRedisCore" Version="3.8.669" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\NCache\NCache.csproj" />
+	</ItemGroup>
+</Project>

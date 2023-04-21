@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using AspectCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using NCache.Extensions;
+using NCache.Redus;
 using NCache.Test.Model;
 using NCache.Test.Service;
 using Xunit;
@@ -57,12 +57,8 @@ namespace NCache.Test
         {
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IPersonService, PersonService>();
-            services.AddNCache(option =>
-            {
-                //option.CacheType = CacheTypeEnum.Local;
-                option.CacheType = CacheTypeEnum.Redis;
-                option.RedisClient = new CSRedis.CSRedisClient("127.0.0.1:6379");
-            });
+            //services.AddNCache();
+            services.AddNCacheRedis(new CSRedis.CSRedisClient("127.0.0.1:6379"));
             services.ConfigureDynamicProxy();
 
             //services.AddDistributedMemoryCache().AddNCache();

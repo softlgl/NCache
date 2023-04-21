@@ -1,9 +1,12 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCache", "NCache\NCache.csproj", "{8EBEC2CE-A6D3-49F2-9BBC-D1AA929534FC}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCache", "NCache\NCache.csproj", "{8EBEC2CE-A6D3-49F2-9BBC-D1AA929534FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCache.Test", "NCache.Test\NCache.Test.csproj", "{6CFE1D60-10AF-416C-8DFC-665FD6873681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCache.Test", "NCache.Test\NCache.Test.csproj", "{6CFE1D60-10AF-416C-8DFC-665FD6873681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCache.Redis", "NCache.Redis\NCache.Redis.csproj", "{8B1C93D6-DA2C-4841-9B43-6C2EDC281ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,5 +22,12 @@ Global
 		{6CFE1D60-10AF-416C-8DFC-665FD6873681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CFE1D60-10AF-416C-8DFC-665FD6873681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CFE1D60-10AF-416C-8DFC-665FD6873681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B1C93D6-DA2C-4841-9B43-6C2EDC281ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1C93D6-DA2C-4841-9B43-6C2EDC281ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1C93D6-DA2C-4841-9B43-6C2EDC281ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1C93D6-DA2C-4841-9B43-6C2EDC281ECF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
