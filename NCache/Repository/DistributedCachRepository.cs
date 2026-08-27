@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.Caching.Distributed;
 using NCache.Utils;
 
@@ -27,8 +27,7 @@ namespace NCache.Repository
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
             _distributedCache.Set(key, bytes, new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(expireSeconds),
-                AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(expireSeconds)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(expireSeconds)
             });
         }
     }

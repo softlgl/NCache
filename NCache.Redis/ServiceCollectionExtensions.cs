@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using NCache.Json;
 using NCache.Redis.Repository;
 using NCache.Repository;
 
@@ -26,6 +27,7 @@ namespace NCache.Redus
             }
 
             RedisHelper.Initialization(cSRedis);
+            services.AddOptions<JsonOptions>();
             services.Replace(ServiceDescriptor.Singleton<ICacheRepository, RedisCacheRepository>());
         }
     }

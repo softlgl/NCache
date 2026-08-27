@@ -1,7 +1,6 @@
-﻿using AspectCore.DynamicProxy;
+using AspectCore.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 using NCache.Repository;
-using NCache.Utils;
 using System;
 using System.Threading.Tasks;
 
@@ -24,18 +23,9 @@ namespace NCache
         {
             await next(context);
 
-            string cacheKey = CacheAspectUtils.GenerateKey(context.Parameters);
-            if (!string.IsNullOrWhiteSpace(KeyPrefix))
-            {
-                cacheKey = $"{KeyPrefix}:{cacheKey}";
-            }
-
-            ICacheRepository redisRepository = context.ServiceProvider.GetRequiredService<ICacheRepository>();
-            object targetReturn = context.IsAsync() ? await context.UnwrapAsyncReturnValue() : context.ReturnValue;
-            if (targetReturn != null)
-            {
-                redisRepository.Delete(cacheKey);
-            }
+            // 方法执行成功后无条件删除缓存，不再依赖返回值非null（否则void方法永远无法逐出）
+            ICacheRepository cacheRepository = context.ServiceProvider.GetRequiredService<ICacheRepository>();
+            cacheRepository.Delete(KeyPrefix, context.Parameters);
         }
     }
 }

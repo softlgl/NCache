@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,22 +15,8 @@ namespace NCache.Utils
         /// <returns></returns>
         public static bool IsEnumerable(this Type type)
         {
-            if (type.IsArray)
-            {
-                return true;
-            }
-            if (typeof(System.Collections.IEnumerable).IsAssignableFrom(type))
-            {
-                return true;
-            }
-            foreach (var it in type.GetInterfaces())
-            {
-                if (it.IsGenericType && typeof(IEnumerable<>) == it.GetGenericTypeDefinition())
-                {
-                    return true;
-                }
-            }
-            return false;
+            // 数组和泛型 IEnumerable<> 都实现了非泛型 IEnumerable，一次判断即可
+            return type.IsArray || typeof(System.Collections.IEnumerable).IsAssignableFrom(type);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
 
 namespace NCache.Json
@@ -26,7 +26,8 @@ namespace NCache.Json
         public static T DeserializeBytes<T>(this byte[] data, JsonSerializerOptions? serializerOptions = null)
         {
             serializerOptions ??= JsonOptions.DefaultSerializerOptions;
-            return Encoding.UTF8.GetString(data).DeserializeObject<T>(serializerOptions);
+            // 直接基于字节反序列化，避免先 GetString 产生一次完整解码
+            return JsonSerializer.Deserialize<T>(data, serializerOptions);
         }
     }
 }
